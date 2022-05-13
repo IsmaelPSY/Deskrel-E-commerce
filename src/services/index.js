@@ -5,7 +5,7 @@ const URL = 'https://ecommerce-exercise-backend.herokuapp.com';
 
 const getConfig = () => ({
     headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem('Token')}`
     }
 })
 
