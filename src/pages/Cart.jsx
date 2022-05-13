@@ -40,6 +40,7 @@ const Cart = () => {
 
   return (
     <div>
+      <button onClick={()=>navigate(-1)}>Back</button>
       <h1>Cart</h1>
       <button onClick={() => setConfirmCheckout(true)} >Checkout</button>
       {total}

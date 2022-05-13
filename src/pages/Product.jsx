@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ProductItem from "../components/ProductItem";
 import { setInfoProductThunk, setProductThunk } from "../redux/actions";
 import { addProductToCart } from "../services";
@@ -11,6 +11,7 @@ const Product = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productInfo);
   const filterProducts = useSelector(state => state.products)
+  const navigate = useNavigate()
 
   const [quantity, setQuantity] = useState(0)
   const [confirm, setConfirm] = useState(false)
@@ -54,6 +55,7 @@ const Product = () => {
    
     return (
         <div>
+          <button onClick={()=>navigate(-1)}>Back</button>
           <Link to={'/cart'}>
             <i className="fa-solid fa-cart-shopping"></i>
           </Link>

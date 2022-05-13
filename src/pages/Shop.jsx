@@ -11,6 +11,7 @@ const Shop = () => {
     const categoriesArr = useSelector(state => state.categories)
 
     const [currentCategory, setCurrentCategory] = useState('')
+    const [filterValue , setFilterValue] = useState('')
 
     useEffect(() => {
         dispatch(setProductThunk(currentCategory))
@@ -19,6 +20,7 @@ const Shop = () => {
 
 
     const list = productArr.map((item) => <ProductItem key={item.id} prodObj={item} />)
+    const listFilterByName = productArr.filter( product => product.name.toUpperCase().includes(filterValue.toUpperCase())).map(product => <Link key={product.id} to={`/shop/${product.id}`}>{product.name}</Link>)
     const categoriesList = categoriesArr.map(item => <option key={item.id} value={item.id}>{item.name}</option>) 
 
     return (
@@ -32,7 +34,12 @@ const Shop = () => {
                         <Link to={''}>Ofertas</Link>
                     </li>
                     <li>
-                    <input className="w-full h-full p-1"></input>
+                        <div>
+                            <input className="w-full h-full p-1" placeholder="Search Product" onChange={e => setFilterValue(e.target.value)}></input>
+                            {
+                                filterValue ? <div className="">{listFilterByName}</div> : null
+                            }
+                        </div>
                     </li>
                     <li >
                         <select className="px-1 py-2" onChange={(e)=>setCurrentCategory(e.target.value)}>
