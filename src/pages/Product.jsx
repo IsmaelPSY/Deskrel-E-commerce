@@ -10,12 +10,11 @@ const Product = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productInfo);
-  const filterProducts = useSelector(state => state.products)
+  const listProducts = useSelector(state => state.products)
   const navigate = useNavigate()
 
   const [quantity, setQuantity] = useState(0)
   const [confirm, setConfirm] = useState(false)
-  const [filtProd, setFiltProd] = useState([])
 
   useEffect(() => {
     dispatch(setInfoProductThunk(id));
@@ -52,15 +51,20 @@ const Product = () => {
     setQuantity(quantity + 1)
   }
 
+  const filterProducts = listProducts.filter(item => item.id!=product.id).map((item) =><ProductItem key={item.id} prodObj={item} />) 
    
     return (
-        <div>
-          <button onClick={()=>navigate(-1)}>Back</button>
-          <Link to={'/cart'}>
-            <i className="fa-solid fa-cart-shopping"></i>
-          </Link>
+        <div className="bg-yellow-300">
+          <div className="flex justify-around content-center">
+            <button className="font-medium text-xl p-2" onClick={()=>navigate(-1)}>Back</button>
+            <div className="font-medium text-xl bg-slate-400 flex my-3 p-2 rounded-full">
+              <Link to={'/cart'} className=" m-auto">
+                <i className="fa-solid fa-cart-shopping"></i>
+              </Link>
+            </div>
+          </div>
             <h1><mark>{product.name}</mark></h1>
-            <p>{product.description}</p>
+            <q>{product.description}</q>
             <button onClick={decrement}>-</button>
                 {quantity}
             <button onClick={increment} >+</button>
@@ -69,7 +73,7 @@ const Product = () => {
             {product.images?.map(item =><div className="snap-center bg-red-500 w-full flex-shrink-0 flex items-center justify-center text-8xl" key={item.id}><img src={item.url}/></div>)}
             </div>
             <h2 className="my-5">Productos Relacionados</h2>
-                {filterProducts.map((item) =><ProductItem key={item.id} prodObj={item} />)}
+                {filterProducts}
             </div>
     )
 }

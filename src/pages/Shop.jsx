@@ -54,7 +54,7 @@ const Shop = () => {
                     </li>
                 </ul>
             </nav>
-            <div className="pb-4">
+            <div className="pb-4 sm:columns-2 lg:columns-3">
             {list}
             </div>
         </div>
