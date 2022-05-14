@@ -65,10 +65,12 @@ const Product = () => {
           </div>
             <h1><mark>{product.name}</mark></h1>
             <q>{product.description}</q>
-            <button onClick={decrement}>-</button>
+            <div>
+            <button className="bg-blue-300 p-2 m-1" onClick={decrement}>-</button>
                 {quantity}
-            <button onClick={increment} >+</button>
-            <button onClick={() => setConfirm(true)} >Add To Cart</button>
+            <button className="bg-blue-300 p-2 m-1" onClick={increment} >+</button>
+            <button className="bg-blue-300 p-2 m-1" onClick={() => setConfirm(true)} >Add To Cart</button>
+            </div>
             <div className="snap-x flex snap-mandatory w-5/6 mx-auto overflow-scroll bg-red-200">
             {product.images?.map(item =><div className="snap-center bg-red-500 w-full flex-shrink-0 flex items-center justify-center text-8xl" key={item.id}><img src={item.url}/></div>)}
             </div>
