@@ -33,6 +33,9 @@ const Login = ()=>{
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-orange-500">
                     Joyería del Dr. Strange
                 </span>
+                <span className="hidden sm:flex bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-orange-500 ">
+                    Movile Size Only PLease
+                </span>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-5/6">
