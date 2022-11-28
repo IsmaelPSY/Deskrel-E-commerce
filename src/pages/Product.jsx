@@ -17,6 +17,8 @@ const Product = () => {
   const [confirm, setConfirm] = useState(false)
 
   useEffect(() => {
+    console.log("mi ID")
+    console.log(id)
     dispatch(setInfoProductThunk(id));
   }, [dispatch, id]);
 
@@ -63,8 +65,8 @@ const Product = () => {
               </Link>
             </div>
           </div>
-            <h1><mark>{product.name}</mark></h1>
-            <q>{product.description}</q>
+            <h1><mark>{product.title}</mark></h1>
+            <q>{product.desc}</q>
             <div>
             <button className="bg-blue-300 p-2 m-1" onClick={decrement}>-</button>
                 {quantity}

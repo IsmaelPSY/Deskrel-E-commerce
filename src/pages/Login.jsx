@@ -15,9 +15,11 @@ const Login = ()=>{
 
     useEffect(()=>{
         if(userObj.email){
+            console.log(userObj)
+
         loginUser(userObj)
             .then(res =>{
-                localStorage.setItem('Token',res.access)
+                localStorage.setItem('Token',res.token)
             })
             .then(()=>{
                 navigate('/shop')
@@ -31,10 +33,7 @@ const Login = ()=>{
 
             <div className="text-5xl font-extrabold">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-orange-500">
-                    Joyería del Dr. Strange
-                </span>
-                <span className="hidden sm:flex bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-orange-500 ">
-                    Movile Size Only PLease
+                    DKarlo's Shoes Sport
                 </span>
             </div>
 

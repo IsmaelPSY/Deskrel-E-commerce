@@ -9,7 +9,7 @@ const Shop = () => {
     const dispatch = useDispatch()
     const productArr = useSelector(state => state.products)
     const categoriesArr = useSelector(state => state.categories)
-
+    console.log(productArr)
     const [currentCategory, setCurrentCategory] = useState('')
     const [filterValue , setFilterValue] = useState('')
 
@@ -20,7 +20,7 @@ const Shop = () => {
 
 
     const list = productArr.map((item) => <ProductItem key={item.id} prodObj={item} />)
-    const listFilterByName = productArr.filter( product => product.name.toUpperCase().includes(filterValue.toUpperCase())).map(product => <Link key={product.id} to={`/shop/${product.id}`}>{product.name}</Link>)
+    const listFilterByName = productArr.filter( product => product.title.toUpperCase().includes(filterValue.toUpperCase())).map(product => <Link key={product.id} to={`/shop/${product.id}`}>{product.name}</Link>)
     const categoriesList = categoriesArr.map(item => <option key={item.id} value={item.id}>{item.name}</option>) 
 
     return (
